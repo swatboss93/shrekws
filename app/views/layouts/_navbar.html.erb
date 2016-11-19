@@ -1,0 +1,16 @@
+<header>
+    <div class="row">
+        <nav class="col s12 m12 l12">
+          <div class="nav-wrapper col s12 m12 l12">
+            <%= link_to "Shrek", users_path, class: "brand-logo" %>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <% if current_user %>
+                <div class="right">
+                  <%= link_to("Logout", destroy_user_session_path,
+                          class: "waves-effect waves-light btn red btn-small", method: :delete) %>
+                </div>
+            <% end %>
+          </div>
+        </nav>
+    </div>
+</header>
