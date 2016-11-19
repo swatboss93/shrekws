@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by email: params["email"]
-    if !user.valid_password? params["password"]
+    if !user.valid_password? params["password"] || user == null
       user = User.new(email: nil)
     end
     respond_to do |format|
