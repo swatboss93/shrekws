@@ -1,7 +1,10 @@
 /*
 *= require material_icons
 */
+@import "materialize/components/color";
+$primary-color: color("green", "darken-3") !default;
 @import "materialize";
+
 
 body {
    display: flex;
