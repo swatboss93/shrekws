@@ -71,7 +71,7 @@ class UsersController < ApplicationController
       user = User.new(email: nil)
     end
     respond_to do |format|
-      format.json { render json: user }
+      format.json { render json: user.to_json(:only => ["email"]) }
     end
   end
 
