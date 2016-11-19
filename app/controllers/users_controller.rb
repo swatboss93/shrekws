@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by email: params["email"]
-    if user == null
+    if user == nil
       user = User.new(email: nil)
     elsif !user.valid_password? params["password"]
       user = User.new(email: nil)
