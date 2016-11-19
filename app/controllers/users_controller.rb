@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #before_action :authenticate!
+  before_action :authenticate_user!, except: [:login]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -60,6 +60,16 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def login
+    user = User.find_by email: params["email"]
+    if !user.valid_password? params["password"]
+      user = User.new(email: nil)
+    end
+    respond_to do |format|
+      format.json { render json: user }
     end
   end
 
